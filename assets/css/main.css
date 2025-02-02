@@ -1,5 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=shopping_cart");
+
 @import "tailwindcss";
 
 body {
-    @apply text-base;
+    @apply font-[Roboto] text-base;
+}
+
+button {
+    @apply rounded-lg cursor-pointer select-none;
 }
