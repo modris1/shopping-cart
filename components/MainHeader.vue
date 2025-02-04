@@ -1,3 +1,9 @@
+<script lang="ts" setup>
+    const userStore = useUserStore();
+    const cartStore = useCartStore();
+    const isCartEmpty = computed(() => cartStore.totalCount === 0);
+</script>
+
 <template>
     <header class="sticky top-0 bg-white z-10">
         <div class="flex justify-between border-b border-gray-200 h-[80px]">
@@ -19,9 +25,3 @@
         </div>
     </header>
 </template>
-
-<script setup>
-    const userStore = useUserStore();
-    const cartStore = useCartStore();
-    const isCartEmpty = computed(() => cartStore.totalCount === 0);
-</script>

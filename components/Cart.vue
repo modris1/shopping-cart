@@ -1,3 +1,8 @@
+<script lang="ts" setup>
+    const cartStore = useCartStore();
+    const isCartEmpty = computed(() => cartStore.totalCount === 0);
+</script>
+
 <template>
     <div class="py-5 flex flex-col gap-5 fixed w-full h-full bg-white z-10" :class="{ 'hidden': !cartStore.showCart }">
         <button class="flex justify-center items-center absolute top-0 right-0 w-20 h-20 hover:text-red-500" aria-label="Close cart" @click="cartStore.showCart = !cartStore.showCart"><span class="material-symbols-outlined">close</span></button>
@@ -33,8 +38,3 @@
         </div>
     </div>
 </template>
-
-<script setup>
-    const cartStore = useCartStore();
-    const isCartEmpty = computed(() => cartStore.totalCount === 0);
-</script>
