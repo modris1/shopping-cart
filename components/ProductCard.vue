@@ -14,7 +14,7 @@
 </script>
 
 <template>
-    <div class="rounded-lg p-4 flex flex-col gap-4 bg-white">
+    <div class="group rounded-lg border border-gray-100 p-4 flex flex-col gap-4">
         <div class="flex justify-center items-center h-40">
             <img class="max-h-full" :src="product.image" :alt="product.title" />
         </div>
@@ -24,7 +24,7 @@
             <button class="flex items-center justify-center w-1/3 h-10 bg-red-500 hover:bg-red-400" aria-label="Remove product from the cart" @click="cartStore.removeItem(product.id)"><span class="material-symbols-outlined">delete</span></button>
         </div>
         <div v-else>
-            <button class="flex items-center justify-center w-full h-10 bg-yellow-400 hover:bg-yellow-300" :class="{ 'opacity-50 pointer-events-none': !userStore.isLoggedIn }" aria-label="Add product to the cart" @click="cartStore.addItem(product)">Add to bag</button>
+            <button class="flex items-center justify-center w-full h-10 bg-gray-100 group-hover:bg-yellow-300" :class="{ 'opacity-50 pointer-events-none': !userStore.isLoggedIn }" aria-label="Add product to the cart" @click="cartStore.addItem(product)">Add to bag</button>
         </div>
     </div>
 </template>

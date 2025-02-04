@@ -48,6 +48,14 @@ export const useCartStore = defineStore("cartStore", () => {
         item.quantity = newQuantity;
     }
 
+    watch(showCart, (newVal) => {
+        if(newVal){
+            document.body.classList.add("overflow-hidden");
+            return;
+        }
+        document.body.classList.remove("overflow-hidden");
+    });
+
     return {
         showCart,
         items,
