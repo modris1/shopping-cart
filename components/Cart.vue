@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div class="py-5 flex flex-col gap-5 fixed w-full h-full bg-white z-10" :class="{ 'hidden': !cartStore.showCart }">
+    <div class="py-5 flex flex-col gap-5 fixed w-full bg-white z-10" :class="{ 'hidden': !cartStore.showCart }">
         <button class="flex justify-center items-center absolute top-0 right-0 w-20 h-20 hover:text-red-500" aria-label="Close cart" @click="cartStore.showCart = !cartStore.showCart"><span class="material-symbols-outlined">close</span></button>
         <h1 class="flex justify-center items-center h-10 text-2xl font-bold">Cart</h1>
         <div class="px-5 flex flex-col gap-5">
@@ -17,12 +17,10 @@
                 </div>
                 <div class="flex flex-col gap-5 w-40">
                     <div class="flex gap-5 h-[50%]">
-                        <button class="flex items-center justify-center w-full bg-gray-100 hover:bg-gray-50" aria-label="Decrease quantity for the product in cart" @click="cartStore.decreaseQuantity(item.product.id)"><span class="material-symbols-outlined">remove</span></button>
-                        <div class="rounded-lg border-2 border-yellow-400 flex justify-center items-center w-full h-full font-bold">{{ item.quantity }}</div>
-                        <button class="flex items-center justify-center w-full bg-gray-100 hover:bg-gray-50" aria-label="Increase quantity for the product in cart" @click="cartStore.increaseQuantity(item.product.id)"><span class="material-symbols-outlined">add</span></button>
+                        <QuantitySelector :id="item.product.id"/>
                     </div>
                     <div class="h-[50%]">
-                        <button class="flex items-center justify-center w-full h-full bg-red-500 hover:bg-red-400" aria-label="Remove product from the cart" @click="cartStore.removeItem(item.product.id)"><span class="material-symbols-outlined">delete</span></button>
+                        <button class="flex items-center justify-center size-full bg-red-500 hover:bg-red-400" aria-label="Remove product from the cart" @click="cartStore.removeItem(item.product.id)"><span class="material-symbols-outlined">delete</span></button>
                     </div>
                 </div>
             </div>

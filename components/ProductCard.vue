@@ -11,17 +11,6 @@
     }
 
     const props = defineProps<{ product: Product }>();
-
-    const setValue = (event: Event) => {
-        const target = event.target as HTMLInputElement;
-        const value = Number(target.value);
-        if(Number.isNaN(value) || value < 1 || !Number.isInteger(value)){
-            cartStore.updateQuantity(props.product.id, 1);
-            target.value = "1";
-            return;
-        }
-        cartStore.updateQuantity(props.product.id, value);
-    }
 </script>
 
 <template>
@@ -31,10 +20,8 @@
         </div>
         <div class="grow text-xs">{{ product.title }}</div>
         <div v-if="cartStore.isAdded(product.id)" class="flex items-center gap-2">
-            <button class="flex items-center justify-center w-full h-10 bg-gray-100 hover:bg-gray-50" aria-label="Decrease quantity for the product in cart" @click="cartStore.decreaseQuantity(product.id)"><span class="material-symbols-outlined">remove</span></button>
-            <input :value="cartStore.quantity(product.id)" @input="setValue" class="rounded-lg border-2 border-yellow-400 flex justify-center items-center w-full h-full text-center font-bold" maxlength="2"/>
-            <button class="flex items-center justify-center w-full h-10 bg-gray-100 hover:bg-gray-50" aria-label="Increase quantity for the product in cart" @click="cartStore.increaseQuantity(product.id)"><span class="material-symbols-outlined">add</span></button>
-            <button class="flex items-center justify-center w-full h-10 bg-red-500 hover:bg-red-400" aria-label="Remove product from the cart" @click="cartStore.removeItem(product.id)"><span class="material-symbols-outlined">delete</span></button>
+            <QuantitySelector class="w-2/3" :id="product.id"/>
+            <button class="flex items-center justify-center w-1/3 h-10 bg-red-500 hover:bg-red-400" aria-label="Remove product from the cart" @click="cartStore.removeItem(product.id)"><span class="material-symbols-outlined">delete</span></button>
         </div>
         <div v-else>
             <button class="flex items-center justify-center w-full h-10 bg-yellow-400 hover:bg-yellow-300" :class="{ 'opacity-50 pointer-events-none': !userStore.isLoggedIn }" aria-label="Add product to the cart" @click="cartStore.addItem(product)">Add to bag</button>
