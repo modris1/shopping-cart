@@ -50,13 +50,13 @@
     <Title>Products</Title>
     <div class="flex">
         <aside class="w-1/5 border-r border-gray-200">
-            <div class="flex flex-col sticky top-[80px]">
-                <div class="box-content py-5 px-2 flex justify-between items-center h-[40px]">
+            <div class="flex flex-col sticky top-20">
+                <div class="box-content py-5 px-2 flex justify-between items-center h-10">
                     <h2 class="text-lg font-extrabold">Filter</h2>
                     <button v-if="selectedCategory.length !== 0" class="px-2 h-full bg-red-500 hover:bg-red-400" @click="selectedCategory = []">Clear</button>
                 </div>
                 <div class="categories p-2 flex flex-col gap-2">
-                    <button v-for="item in storeCategories" class="px-4 flex justify-between items-center h-[40px] capitalize bg-gray-100 hover:bg-gray-50" :class="{ 'bg-yellow-400 hover:bg-yellow-300': selectedCategory.includes(item.category)  }" @click="filterCategory(item.category)">
+                    <button v-for="item in storeCategories" class="px-4 flex justify-between items-center h-10 capitalize bg-gray-100 hover:bg-gray-50" :class="{ 'bg-yellow-400 hover:bg-yellow-300': selectedCategory.includes(item.category)  }" @click="filterCategory(item.category)">
                         <div>{{ item.category }}</div>
                         <div>{{ item.count }}</div>
                     </button>

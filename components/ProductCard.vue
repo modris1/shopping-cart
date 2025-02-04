@@ -12,8 +12,6 @@
 
     const props = defineProps<{ product: Product }>();
 
-    const isAddedToBag = computed(() => cartStore.isAdded(props.product.id));
-
     const setValue = (event: Event) => {
         const target = event.target as HTMLInputElement;
         const value = Number(target.value);
@@ -32,7 +30,7 @@
             <img class="max-h-full" :src="product.image" :alt="product.title" />
         </div>
         <div class="grow text-xs">{{ product.title }}</div>
-        <div v-if="isAddedToBag" class="flex items-center gap-2">
+        <div v-if="cartStore.isAdded(product.id)" class="flex items-center gap-2">
             <button class="flex items-center justify-center w-full h-10 bg-gray-100 hover:bg-gray-50" aria-label="Decrease quantity for the product in cart" @click="cartStore.decreaseQuantity(product.id)"><span class="material-symbols-outlined">remove</span></button>
             <input :value="cartStore.quantity(product.id)" @input="setValue" class="rounded-lg border-2 border-yellow-400 flex justify-center items-center w-full h-full text-center font-bold" maxlength="2"/>
             <button class="flex items-center justify-center w-full h-10 bg-gray-100 hover:bg-gray-50" aria-label="Increase quantity for the product in cart" @click="cartStore.increaseQuantity(product.id)"><span class="material-symbols-outlined">add</span></button>

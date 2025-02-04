@@ -26,6 +26,7 @@ export const useCartStore = defineStore("cartStore", () => {
     });
     const totalPrice = computed(() => items.value.reduce((acc, item) => acc + item.product.price * item.quantity, 0).toFixed(2));
     const totalCount = computed(() => items.value.reduce((acc, item) => acc + item.quantity, 0));
+    const isEmpty = computed(() => totalCount.value === 0);
 
     // Actions
     const empty = () => items.value = [];
@@ -54,6 +55,7 @@ export const useCartStore = defineStore("cartStore", () => {
         quantity,
         totalPrice,
         totalCount,
+        isEmpty,
         empty,
         addItem,
         removeItem,
