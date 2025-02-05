@@ -51,26 +51,36 @@
             <div class="flex flex-col sticky top-20">
                 <div class="box-content py-5 px-2 flex justify-between items-center h-10">
                     <h2 class="text-lg font-extrabold">Filters</h2>
-                    <button v-if="selectedCategories.length !== 0" class="px-2 h-full bg-red-500 hover:bg-red-400" @click="resetFilter">Clear</button>
+                    <button v-if="selectedCategories.length !== 0"
+                            class="px-2 h-full bg-red-500 hover:bg-red-400"
+                            @click="resetFilter">
+                        Clear
+                    </button>
                 </div>
-                <div class="categories p-2 flex flex-col gap-5">
+                <div class="p-2 flex flex-col gap-5">
                     <div v-if="selectedCategories.length !== 0" class="flex flex-col gap-5">
                         <span class="pl-2 font-bold">Selected:</span>
                         <div class="flex flex-col gap-2">
-                            <button v-for="item in selectedCategories" class="group px-4 flex justify-between items-center h-10 capitalize" :class="{ 'bg-gray-100 hover:bg-yellow-200': !item.selected, 'bg-yellow-300 hover:bg-red-400': item.selected  }" @click="item.selected = !item.selected">
+                            <button v-for="item in selectedCategories"
+                                    class="group px-4 flex justify-between items-center h-10 capitalize"
+                                    :class="{ 'bg-gray-100 hover:bg-yellow-200': !item.selected, 'bg-yellow-300 hover:bg-red-400': item.selected  }"
+                                    @click="item.selected = !item.selected">
                                 <div>{{ item.category }}</div>
                                 <span class="min-w-6" :class="{ 'group-hover:hidden': item.selected }">{{ item.count }}</span>
-                                <span v-if="item.selected" class="!hidden group-hover:!inline-block material-symbols-outlined">close</span>
+                                <span v-if="item.selected" class="material-symbols-outlined !hidden group-hover:!inline-block">close</span>
                             </button>
                         </div>
                     </div>
                     <div v-if="unSelectedCategories.length !== 0" class="flex flex-col gap-5">
                         <span class="pl-2">Categories:</span>
                         <div class="flex flex-col gap-2">
-                            <button v-for="item in unSelectedCategories" class="group px-4 flex justify-between items-center h-10 capitalize" :class="{ 'bg-gray-100 hover:bg-yellow-200': !item.selected, 'bg-yellow-300 hover:bg-red-400': item.selected  }" @click="item.selected = !item.selected">
+                            <button v-for="item in unSelectedCategories"
+                                    class="group px-4 flex justify-between items-center h-10 capitalize"
+                                    :class="{ 'bg-gray-100 hover:bg-yellow-200': !item.selected, 'bg-yellow-300 hover:bg-red-400': item.selected  }"
+                                    @click="item.selected = !item.selected">
                                 <div>{{ item.category }}</div>
                                 <span class="min-w-6" :class="{ 'group-hover:hidden': item.selected }">{{ item.count }}</span>
-                                <span v-if="item.selected" class="!hidden group-hover:!inline-block material-symbols-outlined">close</span>
+                                <span v-if="item.selected" class="material-symbols-outlined !hidden group-hover:!inline-block">close</span>
                             </button>
                         </div>
                     </div>
