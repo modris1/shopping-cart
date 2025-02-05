@@ -20,7 +20,7 @@
                 </div>
                 <div v-if="userStore.loggedIn" class="border-l border-gray-200 flex justify-center items-center w-20">
                     <button class="hover:text-red-500"
-                            @click="userStore.logOut()">
+                            @click="cartStore.showCart = false, userStore.logOut()">
                         <span class="material-symbols-outlined">logout</span>
                     </button>
                 </div>
